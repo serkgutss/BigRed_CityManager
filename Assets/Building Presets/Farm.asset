@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58f07604ff0c1249b2fd9b1a0b2dbfa, type: 3}
+  m_Name: Farm
+  m_EditorClassIdentifier: 
+  cost: 40000
+  costPerTurn: 6000
+  prefab: {fileID: 4916451154237634856, guid: 5feb77bb9156c024b99f7543e5954b40, type: 3}
+  foodPerTurn: 20
+  population: 0
+  jobs: 0
+  food: 0
+  militaryPower: 0
+  fear: 0
+  governmentStatus: 0
