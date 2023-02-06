@@ -5,13 +5,16 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.AI;
+using Unity.VisualScripting;
 
 public class GridBuildingSystem : MonoBehaviour
 {
 
-
+    [SerializeField] private NavMeshSurface surface;
     bool canPlace = true;
-  
+
+
+    public GameObject roadContainer;
     public static GridBuildingSystem current;
     private bool currentlyPlacing;
     
@@ -69,6 +72,8 @@ public class GridBuildingSystem : MonoBehaviour
     }
     public void BeginNewBuildingPlacementFactory(BuilldingPreset preset)
     {
+
+        var road = 
         buildingPreset = preset;
         if (currentlyPlacing && City.instance.money > buildingPreset.cost && canPlace == true)
         {
@@ -88,13 +93,64 @@ public class GridBuildingSystem : MonoBehaviour
         buildingPreset = preset;
         if (currentlyPlacing && City.instance.money > buildingPreset.cost && canPlace == true)
         {
-           
-          canPlace=false;
+            
+            
+            canPlace =false;
             PlaceBuilding();
         }
-        currentlyPlacing = true;
-      
         
+        currentlyPlacing = true;
+
+
+         
+       //preset.prefab.transform.SetParent(roadContainer.transform);
+       // surface.UpdateNavMesh(surface.navMeshData);
+
+
+
+
+    }
+    public void BeginNewBuildingPlacementRoad2(BuilldingPreset preset)
+    {
+        buildingPreset = preset;
+        if (currentlyPlacing && City.instance.money > buildingPreset.cost && canPlace == true)
+        {
+
+
+            canPlace = false;
+            PlaceBuilding();
+        }
+
+        currentlyPlacing = true;
+
+
+
+        //preset.prefab.transform.SetParent(roadContainer.transform);
+        // surface.UpdateNavMesh(surface.navMeshData);
+
+
+
+
+    }
+    public void BeginNewBuildingPlacementRoad3(BuilldingPreset preset)
+    {
+        buildingPreset = preset;
+        if (currentlyPlacing && City.instance.money > buildingPreset.cost && canPlace == true)
+        {
+
+
+            canPlace = false;
+            PlaceBuilding();
+        }
+
+        currentlyPlacing = true;
+
+
+
+        //preset.prefab.transform.SetParent(roadContainer.transform);
+        // surface.UpdateNavMesh(surface.navMeshData);
+
+
 
 
     }

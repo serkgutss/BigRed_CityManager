@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
+
 
 public class City : MonoBehaviour
 {
+    public ParticleSystem explosion1,explosion2,explosion3,explosion4,explosion5,explosion6;
+
     public GameObject panelGameOver;
 
 
+    public GameObject activeWar;
+    public GameObject warningRebelText;
     public int brokeStrike;
     public int curGovernmentStatus;
     public int curMilitaryPower;
@@ -35,12 +39,20 @@ public class City : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(ActiveCivilWar());
+        StartCoroutine(CivilWar());
         UpdateStatText();
     }
     private void Update()
     {
-        
+
+
+        WarningRebel();
+            
+
        
+        
+        
         incomePerJob = 1500; 
     }
     //called when we place down a building
@@ -98,16 +110,18 @@ public class City : MonoBehaviour
         {
             curFood += 10;
         }
-
-        if (curFear >0)
+        if (curFear >= 2 && day == 30)
         {
-            curPopulation -= 5;
+            money -= 120000;
+           
+            
         }
+        
     }
 
     private void UpdateStatText()
     {
-        statsText.text = String.Format("Day:{0} Roubles:{1} Pop:{2}/{3} Jobs:{4}/{5} Food:{6} MilitaryPower:{7} Fear:{8} GovernmentStatus:{9}", new object[10] { day, money, curPopulation, maxPopulation, curJobs, maxJobs, curFood, curMilitaryPower, curFear, curGovernmentStatus });
+        statsText.text = string.Format("Day:{0} Roubles:{1} Pop:{2}/{3} Jobs:{4}/{5} Food:{6} MilitaryPower:{7} Fear:{8} GovernmentStatus:{9}", new object[10] { day, money, curPopulation, maxPopulation, curJobs, maxJobs, curFood, curMilitaryPower, curFear, curGovernmentStatus });
     }
 
     private void CalculateFood()
@@ -189,11 +203,85 @@ public class City : MonoBehaviour
     }
 
 
+    private void WarningRebel()
+    {
+        if (curFear>=2  && day==20)
+        {
+            warningRebelText.SetActive(true);
+        }
+        else
+        {
+            warningRebelText.SetActive(false);
+        }
+
+
+    }
+
     private void GameOver()
     {
 
         panelGameOver.SetActive(true);
         Time.timeScale = 0;
 
+    }
+
+    public IEnumerator ActiveCivilWar()
+    {
+
+        
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+        
+        if (curFear >= 2 && day == 30)
+        {
+
+            activeWar.SetActive(true);
+            yield return new WaitForSeconds(5f);
+            activeWar.SetActive(false);
+            yield return new WaitForSeconds(15f);
+
+
+            }
+
+
+        }
+
+
+    }
+
+    public IEnumerator CivilWar()
+    {
+        
+        
+        while (true)
+        {
+
+
+
+            yield return new WaitForSeconds(2f);
+            if (curFear >=2 && day ==30 || curFear >= 2 && day == 31 || curFear >= 2 && day == 32)
+            {
+                
+                
+
+                explosion1.Play();
+                yield return new WaitForSeconds(Random.Range(2, 4));
+                explosion2.Play();
+                yield return new WaitForSeconds(Random.Range(2, 4));
+                explosion3.Play();
+                yield return new WaitForSeconds(Random.Range(2, 4));
+                explosion4.Play();
+                yield return new WaitForSeconds(Random.Range(2, 4));
+                explosion5.Play();
+                yield return new WaitForSeconds(Random.Range(2, 4));
+                explosion6.Play();
+            }
+
+        
+          
+
+
+        }
     }
 }

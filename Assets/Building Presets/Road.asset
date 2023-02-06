@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 10000
   costPerTurn: 500
-  prefab: {fileID: 4369653847717432106, guid: afce079095d879a45b494b1508398931, type: 3}
+  prefab: {fileID: 3351635067702010651, guid: f4402828bce58b54791119f89fa2df61, type: 3}
   foodPerTurn: 0
   population: 0
   jobs: 0

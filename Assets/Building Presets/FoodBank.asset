@@ -20,5 +20,5 @@ MonoBehaviour:
   jobs: 0
   food: 0
   militaryPower: 0
-  fear: -1
+  fear: -2
   governmentStatus: 2

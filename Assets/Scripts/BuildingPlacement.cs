@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BuildingPlacement : MonoBehaviour
 {
 
- 
+    [SerializeField] private NavMeshSurface surface;
     private bool currentlyPlacing;
     private bool currentlyBulldozering;
 
@@ -16,7 +17,7 @@ public class BuildingPlacement : MonoBehaviour
     private BuilldingPreset curBuildingPreset;
 
 
-    GameObject lastInstantiatedObject;
+    
     private float indicatorUpdateRate = 0.05f; //seconds
     private float lastUpdateTime;
     private Vector3 curIndicatorPos;
@@ -24,7 +25,7 @@ public class BuildingPlacement : MonoBehaviour
 
 
     public GameObject panelMoneyWarning;
-    public GameObject bulldozeIndicator;
+   
     public GameObject house, farm, factory, road, gulag, barracks, bankFood;
 
     
@@ -38,7 +39,7 @@ public class BuildingPlacement : MonoBehaviour
         factory.SetActive(false);
         road.SetActive(false);
         gulag.SetActive(false);
-        bulldozeIndicator.SetActive(false);
+       
 
         indicadorObjetivo.SetActive(true);
     }
@@ -78,6 +79,9 @@ public class BuildingPlacement : MonoBehaviour
     {
         //TODO: make sure we have enough money
 
+       
+        surface.UpdateNavMesh(surface.navMeshData);
+        
         currentlyPlacing = true;
         curBuildingPreset = preset;
         CambiarIndicador(road);
@@ -128,7 +132,7 @@ public class BuildingPlacement : MonoBehaviour
     public void ToggleBulldoze()
     {
         currentlyBulldozering = !currentlyBulldozering;
-        CambiarIndicador(bulldozeIndicator);
+        
     }
 
 
@@ -163,8 +167,7 @@ public class BuildingPlacement : MonoBehaviour
                 gulag.transform.position = curIndicatorPos;
             if (currentlyPlacing)
                 barracks.transform.position = curIndicatorPos;
-            else if(currentlyBulldozering)
-                bulldozeIndicator.transform.position = curIndicatorPos;
+           
         }
 
         //called when we press left mouse button
