@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Presets;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.AI;
@@ -9,19 +7,19 @@ using Unity.VisualScripting;
 
 public class GridBuildingSystem : MonoBehaviour
 {
+    private AudioSource built;
+    
+    public bool canPlace = true;
 
-    [SerializeField] private NavMeshSurface surface;
-    bool canPlace = true;
 
-
-    public GameObject roadContainer;
+    
     public static GridBuildingSystem current;
     private bool currentlyPlacing;
     
     private BuilldingPreset buildingPreset;
     public GridLayout gridLayout;
     private Grid grid;
-    public GameObject bulldozeIndicator;
+    
     [SerializeField] private Tilemap mainTilemap;
     [SerializeField] private TileBase whiteTile;
 
@@ -34,7 +32,7 @@ public class GridBuildingSystem : MonoBehaviour
     private void Awake()
     {
 
-        
+        built= GetComponent<AudioSource>();   
         current = this;
         grid = gridLayout.gameObject.GetComponent<Grid>();
     }
@@ -88,28 +86,7 @@ public class GridBuildingSystem : MonoBehaviour
 
 
     }
-    public void BeginNewBuildingPlacementRoad(BuilldingPreset preset)
-    {
-        buildingPreset = preset;
-        if (currentlyPlacing && City.instance.money > buildingPreset.cost && canPlace == true)
-        {
-            
-            
-            canPlace =false;
-            PlaceBuilding();
-        }
-        
-        currentlyPlacing = true;
-
-
-         
-       //preset.prefab.transform.SetParent(roadContainer.transform);
-       // surface.UpdateNavMesh(surface.navMeshData);
-
-
-
-
-    }
+   
     public void BeginNewBuildingPlacementRoad2(BuilldingPreset preset)
     {
         buildingPreset = preset;
@@ -201,7 +178,8 @@ public class GridBuildingSystem : MonoBehaviour
     }
     private void Update()
     {
-        
+
+     
 
         if (!objectToPlace)
         {
@@ -221,8 +199,10 @@ public class GridBuildingSystem : MonoBehaviour
         
         if (CanBePlaced(objectToPlace))
         {
-                canPlace=true;
+                City.instance.OnPlaceBuilding(buildingPreset.prefab.GetComponent<Building>());
+                canPlace =true;
             objectToPlace.Place();
+                built.Play();
                 //Vector3Int start = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
                 //TakeArea(start, objectToPlace.Size);
         }
@@ -263,7 +243,7 @@ public class GridBuildingSystem : MonoBehaviour
 
 
 
-        City.instance.OnPlaceBuilding(buildingPreset.prefab.GetComponent<Building>());
+        
 
     }
 

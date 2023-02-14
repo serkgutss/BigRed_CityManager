@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class DayNightSystem : MonoBehaviour
 {
+    
     public static DayNightSystem instance;
     public float currentTime;
     public float dayLengthMinutes;
@@ -34,6 +36,8 @@ public class DayNightSystem : MonoBehaviour
 
     private void Update()
     {
+      
+
         currentTime += 1 * Time.deltaTime;
         translateTime = (currentTime / (midday * 2));
 
@@ -93,4 +97,26 @@ public class DayNightSystem : MonoBehaviour
 
         currentTime = 0;
     }
+
+
+    public void TimeAccel()
+    {
+        Time.timeScale *= 2;
+
+        if (Time.timeScale >= 4)
+        {
+            Time.timeScale = 4;
+        }
+
+    }
+    public void TimeDeccel()
+    {
+        Time.timeScale /= 2;
+        if (Time.timeScale <= 0.2f)
+        {
+            Time.timeScale = 0.2f;
+        }
+
+    }
+
 }

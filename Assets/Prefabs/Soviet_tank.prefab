@@ -634,7 +634,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8548241570531107681}
   - component: {fileID: 8548241570531107695}
-  - component: {fileID: 8548241570531107694}
   m_Layer: 7
   m_Name: Soviet_tank
   m_TagString: Untagged
@@ -680,30 +679,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8548241570531107694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8548241570531107683}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ec062ff0e28ba4e8db4c1cd15f954e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 8548241570531107695}
-  path:
-  - {x: 0.164, y: 0, z: 15.269}
-  - {x: 7.817, y: 0, z: 15.176}
-  - {x: 7.997, y: 0, z: 5.456}
-  - {x: 2.417, y: 0, z: 5.32}
-  - {x: 2.417, y: 0, z: 8.859}
-  - {x: 0.667, y: 0, z: 8.859}
-  - {x: 0.667, y: 0, z: 10.812}
-  - {x: -2.147, y: 0, z: 10.812}
-  - {x: -2.147, y: 0, z: 13.585}
-  currentPoint: 0
 --- !u!1001 &8548241570486674951
 PrefabInstance:
   m_ObjectHideFlags: 0

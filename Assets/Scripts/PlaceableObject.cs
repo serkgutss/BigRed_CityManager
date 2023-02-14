@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlaceableObject : MonoBehaviour
 {
-public bool Placed { get; private set; }
+    
+    
+    
+
+    public bool Placed { get; private set; }
     public Vector3Int Size  { get; private set; }
     private Vector3[] Vertices;
 
@@ -36,7 +41,7 @@ public bool Placed { get; private set; }
             z: 1);
 
     }
-
+   
 
     public Vector3 GetStartPosition()
     {
@@ -47,6 +52,7 @@ public bool Placed { get; private set; }
 
     private void Start()
     {
+       
         GetColliderVertexPositionsLocal();
         CalculateSizeInCells();
     }

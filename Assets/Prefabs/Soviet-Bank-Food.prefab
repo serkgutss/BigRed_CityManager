@@ -907,8 +907,8 @@ GameObject:
   - component: {fileID: 8416351387013569621}
   - component: {fileID: 2499826468283414891}
   - component: {fileID: 2563987238221329392}
-  - component: {fileID: -2066283215122788623}
   - component: {fileID: -7287704756378360002}
+  - component: {fileID: -2696854924924791309}
   m_Layer: 0
   m_Name: Soviet-Bank-Food
   m_TagString: bankFood
@@ -1108,21 +1108,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-2066283215122788623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415632325184136140}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b1da90ee044397479649419096504b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ignoreLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &-7287704756378360002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1135,6 +1120,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05710b5b1d58c684fb40c4df386dacba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &-2696854924924791309
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415632325184136140}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &436489267067766020
 GameObject:
   m_ObjectHideFlags: 0
